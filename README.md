@@ -4,7 +4,7 @@
 - docker-compose
 ## Instructions
 
-1. Move to ```form-api``` directory
+1. Move to ```form_api``` directory
 2. Call ```docker-compose up -d --build```
 3. Visit http://localhost:8000/ to use the GUI
 4. Or visit  http://localhost:8000/graphql to use the Graphql interface 
