@@ -1,0 +1,31 @@
+version: "3.7"
+services:
+  db:
+    image: "postgres:11.2"
+    container_name: "form_postgres1"
+    environment:
+     - POSTGRES_USER=formapiuser
+     - POSTGRES_PASSWORD=formapi
+     - POSTGRES_DB=formapi
+     - "POSTGRES_HOST_AUTH_METHOD=trust"
+    volumes:
+      - postgres_data1:/var/lib/postgresql/data
+    restart: always
+
+
+  web:
+      build: .
+      volumes:
+        - .:/src
+        - media:/media
+      ports:
+        - 8000:8000
+      depends_on:
+        - db
+      command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; sh /src/start_server.sh'
+
+
+volumes:
+  postgres_data1:
+    name: form_postgres_data1
+  media: {}

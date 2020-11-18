@@ -1,0 +1,6 @@
+graphene
+django
+graphene_django
+psycopg2
+graphene-file-upload
+pillow

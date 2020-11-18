@@ -1,0 +1,33 @@
+<h1>Products</h1>
+
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Position</th>
+<th>Quantity</th>
+<th>Price</th>
+</tr>
+</thead>
+<tbody >
+{% for product in object_list %}
+<tr>
+    <td>{{ product.code }}</td>
+    <td>{{ product.position }}</td>
+    <td>{{ product.quantity }}</td>
+    <td>{{ product.price }}</td>
+
+
+<td>
+<a  href="{% url "product_detail"  product.id  %}">Details</a>
+<a  href="{% url "product_edit"  product.id  %}">Edit</a>
+<a  href="{% url "product_delete"  product.id  %}">Delete</a>
+</td>
+</tr>
+
+{% endfor %}
+
+<a  href="{% url "product_create"  %}">Create Product</a>
+
+</tbody>
+</table>
